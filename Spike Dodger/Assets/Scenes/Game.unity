@@ -1165,7 +1165,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1592581755}
   - component: {fileID: 1592581758}
-  - component: {fileID: 1592581757}
   - component: {fileID: 1592581756}
   - component: {fileID: 1592581759}
   - component: {fileID: 1592581760}
@@ -1202,6 +1201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedbb4c0d759def4eafe4f5876aafa26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
+  runSpeed: 100
   m_JumpForce: 900
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
@@ -1222,19 +1223,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CharacterController2D+BoolEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1592581757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1592581754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 637e822939b6d1046a096c26c273bc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1592581756}
-  runSpeed: 100
 --- !u!212 &1592581758
 SpriteRenderer:
   m_ObjectHideFlags: 0

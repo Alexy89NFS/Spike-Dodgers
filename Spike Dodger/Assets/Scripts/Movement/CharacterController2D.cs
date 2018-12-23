@@ -3,7 +3,17 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
+    public enum Mode {Normal, Jetpack, Blast, God};
+    public Mode mode;
+
+    // Player Movement Script
+    public float runSpeed = 40f;
+
+    float horizontalMove = 0;
+    bool jumping = false;
+    // Player Movement Script
+
+    [SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
@@ -44,9 +54,22 @@ public class CharacterController2D : MonoBehaviour
 			OnCrouchEvent = new BoolEvent();
 	}
 
-	private void FixedUpdate()
+    private void Update()
+    {
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumping = true;
+        }
+    }
+
+    private void FixedUpdate()
 	{
-		bool wasGrounded = m_Grounded;
+        Move(horizontalMove * Time.fixedDeltaTime, false, jumping);
+        jumping = false;
+
+        bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
